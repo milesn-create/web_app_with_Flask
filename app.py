@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, make_response
 import re
 
 app = Flask(__name__)
@@ -20,6 +20,14 @@ def login():
     if request.method == 'POST':
         login = request.form.get('login')
         password = request.form.get('password')
+
+        response = make_response(
+            render_template('login.html', login=login, password=password)
+        )
+
+        response.set_cookie('user_login', login)
+
+        return response
 
     return render_template('login.html', login=login, password=password)
 

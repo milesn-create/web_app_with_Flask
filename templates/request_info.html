@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Параметры URL</h2>
+<ul>
+    {% for key, value in args.items() %}
+        <li>{{ key }} = {{ value }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Заголовки</h2>
+<ul>
+    {% for key, value in headers.items() %}
+        <li>{{ key }} = {{ value }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Cookies</h2>
+<ul>
+    {% for key, value in cookies.items() %}
+        <li>{{ key }} = {{ value }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
